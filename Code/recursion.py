@@ -14,7 +14,10 @@ def factorial(n):
 
 def factorial_iterative(n):
     # TODO: implement the factorial function iteratively here
-    pass
+    num = 1
+    for i in range(1, n + 1):
+        num = num * i
+        return num
     # once implemented, change factorial (above) to call factorial_iterative
     # to verify that your iterative implementation passes all tests
 

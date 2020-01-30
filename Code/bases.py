@@ -14,6 +14,7 @@ HEXDIGITS = string.hexdigits
 DIGITS = string.digits
 LOWER = string.ascii_lowercase
 UPPER = string.ascii_uppercase 
+NUM = string.printable
 
 def decode(digits, base):
     """Decode given digits in given base to number in base 10.
@@ -23,6 +24,7 @@ def decode(digits, base):
     # Handle up to base 36 [0-9a-z]
     assert 2 <= base <= 36, 'base is out of range: {}'.format(base)
     # TODO: Decode digits from binary (base 2)
+    """
     # exp = exponent  (name of variable)
     # dec = decimal  (name of variable)
     if base == 2:
@@ -43,15 +45,13 @@ def decode(digits, base):
             dec += HEXDIGITS.index(i) * 16**exp
             exp += 1
         return dec
-
+    """
     # TODO: Decode digits from any base (2 up to 36)
-    # exp = exponent (name of variable)
     # dec = decimal  (name of variable)
-    exp = 0
-    dec = 0
-    for i in digits[::-1]:
-        dec += (DIGITS + UPPER).index(i) * base**exp
-        exp += 1
+    dec, index = 0, 0
+    for digit in reversed(digits):
+        dec += NUM.find(digit) * pow(base, index)
+        index += 1
     return dec
 
 def encode(number, base):
@@ -63,6 +63,7 @@ def encode(number, base):
     assert 2 <= base <= 36, 'base is out of range: {}'.format(base)
     # Handle unsigned numbers only for now
     assert number >= 0, 'number is negative: {}'.format(number)
+    """
     # TODO: Encode number in binary (base 2)
     if base == 2:
         if number > 1:
@@ -77,7 +78,7 @@ def encode(number, base):
             return hexdecimal[number]
         else:
             return encode(number//16, base) + hexdecimal[number % 16]
-
+"""
     # TODO: Encode number in any base (2 up to 36)
     """BASE 2-36"""
     base_digits = (DIGITS + LOWER)[:base]
