@@ -24,16 +24,16 @@ def is_palindrome(text):
 def is_palindrome_iterative(text):
     # TODO: implement the is_palindrome function iteratively here
     text = text.lower()
-    a_word = 0
-    b_word = len(text) - 1
-    while a_word < b_word:
-        while not text[a_word].isalpha():
-            a_word += 1
-        while not text[b_word].isalpha():
-            b_word -= 1
-        if text[a_word] == text[b_word]:
-            a_word += 1
-            b_word -= 1
+    a_letter = 0
+    b_letter = len(text) - 1
+    while a_letter < b_letter:
+        while not text[a_letter].isalpha():
+            a_letter += 1
+        while not text[b_letter].isalpha():
+            b_letter -= 1
+        if text[a_letter] == text[b_letter]:
+            a_letter += 1
+            b_letter -= 1
         else:
             return False
     return True
@@ -43,6 +43,8 @@ def is_palindrome_iterative(text):
 
 def is_palindrome_recursive(text, left=None, right=None):
     # TODO: implement the is_palindrome function recursively here
+    if text == "":
+        return True
     text = text.lower()
     if left is None:
         left = 0

@@ -5,11 +5,11 @@ def contains(text, pattern):
     assert isinstance(text, str), 'text is not a string: {}'.format(text)
     assert isinstance(pattern, str), 'pattern is not a string: {}'.format(text)
     # TODO: Implement contains here (iteratively and/or recursively)
+    """Best case: O(1); worst case: O(n)"""
     if find_index(text, pattern) == None:
         return False
     else:
         return True
-
 
 def find_index(text, pattern):
     """Return the starting index of the first occurrence of pattern in text,
@@ -17,7 +17,20 @@ def find_index(text, pattern):
     assert isinstance(text, str), 'text is not a string: {}'.format(text)
     assert isinstance(pattern, str), 'pattern is not a string: {}'.format(text)
     # TODO: Implement find_index here (iteratively and/or recursively)
-    pass
+    """Best case: O(1); worst case: O(n)"""
+    index = list(text)
+    letter = list(pattern)
+    
+    if len(pattern) == 0:
+        return 0
+
+    for i in range(len(index)):
+        for j in range(0, len(letter)):
+            if letter[j] != index[i+j]:
+                break
+            elif j == len(letter)-1:
+                return i
+    return None
 
 def find_all_indexes(text, pattern):
     """Return a list of starting indexes of all occurrences of pattern in text,
@@ -25,8 +38,13 @@ def find_all_indexes(text, pattern):
     assert isinstance(text, str), 'text is not a string: {}'.format(text)
     assert isinstance(pattern, str), 'pattern is not a string: {}'.format(text)
     # TODO: Implement find_all_indexes here (iteratively and/or recursively)
-    #indexes = []
-    pass
+    """Best case: O(1); worst case: O(n)"""
+    indexes = []
+    for i in range(0, (len(text) - len(pattern) + 1)):
+        if len(text) - 1 >= len(indexes):
+            if pattern == text[i:(i+len(pattern))]:
+                indexes.append(i)
+    return indexes
 
 
 def test_string_algorithms(text, pattern):
