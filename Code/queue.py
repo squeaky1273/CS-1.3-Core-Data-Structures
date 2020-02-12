@@ -34,7 +34,7 @@ class LinkedQueue(object):
 
     def enqueue(self, item):
         """Insert the given item at the back of this queue.
-        Running time: O(???) – Why? [TODO]"""
+        Running time: O(1) – Items are appended to the list. [TODO]"""
         # TODO: Insert given item
         self.list.append(item)
 
@@ -42,12 +42,21 @@ class LinkedQueue(object):
         """Return the item at the front of this queue without removing it,
         or None if this queue is empty."""
         # TODO: Return front item, if any
+        if self.is_empty():
+            return None
+        else:
+            return self.list.head.data
 
     def dequeue(self):
         """Remove and return the item at the front of this queue,
         or raise ValueError if this queue is empty.
-        Running time: O(???) – Why? [TODO]"""
+        Running time: O(1) – Items are added to the front of the queue in a constant time. [TODO]"""
         # TODO: Remove and return front item, if any
+        if self.is_empty():
+            raise ValueError("Queue is empty")
+        item = self.list.head.data
+        self.list.delete(self.front())
+        return item
 
 
 # Implement ArrayQueue below, then change the assignment at the bottom
@@ -81,7 +90,7 @@ class ArrayQueue(object):
 
     def enqueue(self, item):
         """Insert the given item at the back of this queue.
-        Running time: O(???) – Why? [TODO]"""
+        Running time: O(1) – Items are only being added to the queue [TODO]"""
         # TODO: Insert given item
         self.list.append(item)
 
@@ -97,7 +106,7 @@ class ArrayQueue(object):
     def dequeue(self):
         """Remove and return the item at the front of this queue,
         or raise ValueError if this queue is empty.
-        Running time: O(???) – Why? [TODO]"""
+        Running time: O(n) – The index is moved when an item is removed [TODO]"""
         # TODO: Remove and return front item, if any
         if self.is_empty():
             raise ValueError('No items in the queue')
@@ -107,5 +116,5 @@ class ArrayQueue(object):
 
 # Implement LinkedQueue and ArrayQueue above, then change the assignment below
 # to use each of your Queue implementations to verify they each pass all tests
-# Queue = LinkedQueue
-Queue = ArrayQueue
+Queue = LinkedQueue
+# Queue = ArrayQueue

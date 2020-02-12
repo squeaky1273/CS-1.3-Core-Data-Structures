@@ -97,13 +97,13 @@ class LinkedList(object):
         if not (0 <= index <= self.size):
             raise ValueError('List index out of range: {}'.format(index))
 
-        if index == 0:
-            self.prepend(item) 
-        elif index == self.size:
-            self.append(item)
+        if index == self.size:
+            self.append(item) 
+        elif index == 0:
+            self.prepend(item)
         else:
-            get_node = self.head
             new_node = Node(item)
+            get_node = self.head
             while index > 1:
                 get_node = get_node.next
                 index -= 1
@@ -176,10 +176,10 @@ class LinkedList(object):
         get_node = self.head
         while get_node is not None and get_node.data != old_item:
             get_node = get_node.next
-        if get_node is not None:
-            get_node.data = new_item
-        else:
+        if get_node is None:
             raise ValueError("Item {} not found".format(old_item))
+        else:
+            get_node.data = new_item
 
     def delete(self, item):
         """Delete the given item from this linked list, or raise ValueError.

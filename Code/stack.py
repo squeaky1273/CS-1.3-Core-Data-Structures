@@ -22,7 +22,7 @@ class LinkedStack(object):
     def is_empty(self):
         """Return True if this stack is empty, or False otherwise."""
         # TODO: Check if empty
-        if self.is_empty():
+        if self.list.length() == 0:
             return True
         else:
             return False
@@ -30,11 +30,11 @@ class LinkedStack(object):
     def length(self):
         """Return the number of items in this stack."""
         # TODO: Count number of items
-        return self.list.size
+        return self.list.length()
 
     def push(self, item):
         """Insert the given item on the top of this stack.
-        Running time: O(???) – Why? [TODO]"""
+        Running time: O(1) – Prepending to the list is constant [TODO]"""
         # TODO: Push given item
         self.list.prepend(item)
 
@@ -42,20 +42,20 @@ class LinkedStack(object):
         """Return the item on the top of this stack without removing it,
         or None if this stack is empty."""
         # TODO: Return top item, if any
-        if self.list.tail:
-            return self.list.tail.data
+        if self.list.head is not None:
+            return self.list.head.data
         else:
             return None
 
     def pop(self):
         """Remove and return the item on the top of this stack,
         or raise ValueError if this stack is empty.
-        Running time: O(???) – Why? [TODO]"""
+        Running time: O(1) – Items will be deleted in a constant time until empty [TODO]"""
         # TODO: Remove and return top item, if any
         if self.is_empty():
             raise ValueError('Stack is empty')
-        item = self.list.tail.data
-        self.list.delete(item)
+        item = self.list.head.data
+        self.list.delete(self.peek())
         return item
 
 
@@ -90,7 +90,7 @@ class ArrayStack(object):
 
     def push(self, item):
         """Insert the given item on the top of this stack.
-        Running time: O(???) – Why? [TODO]"""
+        Running time: O(1) – The given item is being appended to the list in a constant time as others [TODO]"""
         # TODO: Insert given item
         self.list.append(item)
 
@@ -106,7 +106,7 @@ class ArrayStack(object):
     def pop(self):
         """Remove and return the item on the top of this stack,
         or raise ValueError if this stack is empty.
-        Running time: O(???) – Why? [TODO]"""
+        Running time: O(1) – Items are being popped from the list in a constant time. [TODO]"""
         # TODO: Remove and return top item, if any
         if self.is_empty():
             raise ValueError('No items in the stack')
@@ -116,5 +116,5 @@ class ArrayStack(object):
 
 # Implement LinkedStack and ArrayStack above, then change the assignment below
 # to use each of your Stack implementations to verify they each pass all tests
-Stack = LinkedStack
-# Stack = ArrayStack
+# Stack = LinkedStack
+Stack = ArrayStack
