@@ -5,19 +5,21 @@ def contains(text, pattern):
     assert isinstance(text, str), 'text is not a string: {}'.format(text)
     assert isinstance(pattern, str), 'pattern is not a string: {}'.format(text)
     # TODO: Implement contains here (iteratively and/or recursively)
-    """Best case: O(1); worst case: O(n)"""
+    """Best case: O(1) if a pattern occurs at index 0; 
+    worst case: O(n) if a patter occurs at the end of the text"""
     if find_index(text, pattern) == None:
         return False
     else:
         return True
 
-def find_index(text, pattern):
+def find_index(text, pattern, index=0):
     """Return the starting index of the first occurrence of pattern in text,
     or None if not found."""
     assert isinstance(text, str), 'text is not a string: {}'.format(text)
     assert isinstance(pattern, str), 'pattern is not a string: {}'.format(text)
     # TODO: Implement find_index here (iteratively and/or recursively)
-    """Best case: O(1); worst case: O(n)"""
+    """Best case: O(1) if a pattern occurs at index 0; 
+    worst case: O(n) if a pattern occurs at the end"""
     index = list(text)
     letter = list(pattern)
     
@@ -38,14 +40,24 @@ def find_all_indexes(text, pattern):
     assert isinstance(text, str), 'text is not a string: {}'.format(text)
     assert isinstance(pattern, str), 'pattern is not a string: {}'.format(text)
     # TODO: Implement find_all_indexes here (iteratively and/or recursively)
-    """Best case: O(1); worst case: O(n)"""
+    """Best case: O(1) if there is nothing in the text; 
+    worst case: O(n) if there is no pattern in the text"""
     indexes = []
-    for i in range(0, (len(text) - len(pattern) + 1)):
-        if len(text) - 1 >= len(indexes):
-            if pattern == text[i:(i+len(pattern))]:
-                indexes.append(i)
-    return indexes
 
+    i = find_index(text, pattern)
+    if i is None:
+        return indexes
+    else:
+        indexes.append(i)
+
+    for index in indexes:
+        i = find_index(text, pattern, index + 1)
+        if i < len(text) and i is not None:
+            indexes.append(i)
+        else:
+            break
+        
+    return indexes
 
 def test_string_algorithms(text, pattern):
     found = contains(text, pattern)

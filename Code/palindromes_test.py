@@ -16,6 +16,7 @@ class TestPalindromes(unittest.TestCase):
         assert is_palindrome('radar') is True
         assert is_palindrome('doggod') is True
         assert is_palindrome('racecar') is True
+        assert is_palindrome('eye') is True
 
     def test_is_palindrome_with_mixed_casing(self):
         # palindromes with mixed letter casing
@@ -25,6 +26,7 @@ class TestPalindromes(unittest.TestCase):
         assert is_palindrome('Radar') is True
         assert is_palindrome('DogGod') is True
         assert is_palindrome('RaceCar') is True
+        assert is_palindrome('Tacocat') is True
 
     def test_is_palindrome_with_whitespace(self):
         # palindromes with whitespace
@@ -34,6 +36,7 @@ class TestPalindromes(unittest.TestCase):
         assert is_palindrome('taco cat') is True
         assert is_palindrome('race car') is True
         assert is_palindrome('race fast safe car') is True
+        assert is_palindrome('may a moody baby doom a yam') is True
 
     def test_is_palindrome_with_whitespace_and_mixed_casing(self):
         # palindromes with whitespace and mixed letter casing
@@ -43,6 +46,8 @@ class TestPalindromes(unittest.TestCase):
         assert is_palindrome('Taco Cat') is True
         assert is_palindrome('Race Car') is True
         assert is_palindrome('Race Fast Safe Car') is True
+        assert is_palindrome('Step on no pets') is True
+        
 
     def test_is_palindrome_with_whitespace_and_punctuation(self):
         # palindromes with whitespace and punctuation
@@ -52,6 +57,7 @@ class TestPalindromes(unittest.TestCase):
         assert is_palindrome('taco? cat.') is True
         assert is_palindrome('race-car!!!') is True
         assert is_palindrome('race fast, safe car...') is True
+        assert is_palindrome('may a moody baby doom a yam?') is True
 
     def test_is_palindrome_with_mixed_casing_and_punctuation(self):
         # palindromes with whitespace, punctuation and mixed letter casing
