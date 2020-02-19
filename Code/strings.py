@@ -45,18 +45,11 @@ def find_all_indexes(text, pattern):
     indexes = []
 
     i = find_index(text, pattern)
-    if i is None:
-        return indexes
-    else:
-        indexes.append(i)
 
-    for index in indexes:
-        i = find_index(text, pattern, index + 1)
-        if i < len(text) and i is not None:
-            indexes.append(i)
-        else:
-            break
-        
+    for i in range(0, (len(text) - len(pattern) + 1)):
+        if len(text) - 1 >= len(indexes):
+            if pattern == text[i:(i+len(pattern))]:
+                indexes.append(i)
     return indexes
 
 def test_string_algorithms(text, pattern):
