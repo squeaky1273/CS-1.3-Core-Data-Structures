@@ -44,8 +44,6 @@ def find_all_indexes(text, pattern):
     worst case: O(n) if there is no pattern in the text"""
     indexes = []
 
-    i = find_index(text, pattern)
-
     for i in range(0, (len(text) - len(pattern) + 1)):
         if len(text) - 1 >= len(indexes):
             if pattern == text[i:(i+len(pattern))]:

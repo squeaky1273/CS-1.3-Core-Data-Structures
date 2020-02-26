@@ -72,7 +72,7 @@ class HashTable(object):
     def contains(self, key):
         """Return True if this hash table contains the given key, or False.
         Best case running time: O(1); The item with the key is the first one reached [TODO]
-        Worst case running time: ; [TODO]"""
+        Worst case running time: O(n/b); The item isn't in the list [TODO]"""
         # Find the bucket the given key belongs in
         index = self._bucket_index(key)
         bucket = self.buckets[index]
@@ -83,7 +83,7 @@ class HashTable(object):
     def get(self, key):
         """Return the value associated with the given key, or raise KeyError.
         Best case running time: O(1); The item with the key and value is the first one reached [TODO]
-        Worst case running time: ; [TODO]"""
+        Worst case running time: O(n/b); The item isn't in the list [TODO]"""
         # Find the bucket the given key belongs in
         index = self._bucket_index(key)
         bucket = self.buckets[index]
@@ -100,7 +100,7 @@ class HashTable(object):
     def set(self, key, value):
         """Insert or update the given key with its associated value.
         Best case running time: O(1); The item with the key and value is the first one reached [TODO]
-        Worst case running time: ; [TODO]"""
+        Worst case running time: O(n/b); The item isn't in the list [TODO]"""
         # Find the bucket the given key belongs in
         index = self._bucket_index(key)
         bucket = self.buckets[index]
@@ -123,7 +123,7 @@ class HashTable(object):
     def delete(self, key):
         """Delete the given key and its associated value, or raise KeyError.
         Best case running time: O(1); The item with the key and associated value is the first one reached [TODO]
-        Worst case running time: ; [TODO]"""
+        Worst case running time: O(n/b); The item isn't in the list [TODO]"""
         # Find the bucket the given key belongs in
         index = self._bucket_index(key)
         bucket = self.buckets[index]
@@ -140,8 +140,8 @@ class HashTable(object):
         """Resize this hash table's buckets and rehash all key-value entries.
         Should be called automatically when load factor exceeds a threshold
         such as 0.75 after an insertion (when set is called with a new key).
-        Best and worst case running time: O(n); [TODO]
-        Best and worst case space usage:  [TODO]"""
+        Best and worst case running time: O(n); The items need to be copied over to a new table [TODO]
+        Best and worst case space usage: O(n+2b) ; Buckets need to be created and deleted for the nodes(items) [TODO]"""
         # If unspecified, choose new size dynamically based on current size
         if new_size is None:
             new_size = len(self.buckets) * 2  # Double size
