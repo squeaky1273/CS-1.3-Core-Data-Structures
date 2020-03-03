@@ -17,21 +17,18 @@ class Set:
 
     def contains(self, element):
         """return a boolean indicating whether element is in this set
-        Running time: O(1); Hash tables work in constant time
-        Space(memory): """
+        Running time: O(1); Hash tables work in constant time. They resize when needed."""
         return self.hash_set.contains(element)
 
     def add(self, element):
         """add element to this set, if not present already
-        Running time: O(1); Hash tables use key and value pairs
-        Space(memory): """
+        Running time: O(1); Hash tables use key and value pairs. You can use those to add an item at a specific place. They resize when needed."""
         if not self.hash_set.contains(element):
             self.hash_set.set(element, 1)
 
     def remove(self, element):
         """remove element from this set, if present, or else raise KeyError
-        Running time: O(1); Items in the table are access in constant time
-        Space(memory): """
+        Running time: O(1); Items in the table are access in constant time. You can access an item with the key."""
         if self.hash_set.contains(element):
             self.hash_set.delete(element)
         else:
@@ -39,8 +36,7 @@ class Set:
 
     def union(self, other_set):
         """return a new set that is the union of this set and other_set
-        Running time: O(n); It takes linear time to get keys
-        Space(memory): """
+        Running time: O(n); It takes linear time to get keys. If the load factor increases too much, resizing is needed."""
         #new set
         new_set = Set()
         #old sets
@@ -56,8 +52,7 @@ class Set:
 
     def intersection(self, other_set):
         """return a new set that is the intersection of this set and other_set
-        Running time: O(n); It takes linear time to get keys
-        Space(memory): """
+        Running time: O(n); It takes linear time to get keys"""
         # new set
         new_set = Set()
         # old sets
@@ -75,8 +70,7 @@ class Set:
 
     def difference(self, other_set):
         """return a new set that is the difference of this set and other_set
-        Running time: O(n); key method are conducted in linear time.
-        Space(memory): """
+        Running time: O(n); key method are conducted in linear time."""
         # new set
         new_set = Set()
         # old sets
@@ -94,8 +88,7 @@ class Set:
 
     def is_subset(self, other_set):
         """return a boolean indicating whether other_set is a subset of this set
-        Running time: O(n); key method are conducted in linear time.
-        Space(memory): """
+        Running time: O(n); key method are conducted in linear time."""
         # old sets
         this = self.hash_set.keys()
         other = other_set.hash_set.keys()

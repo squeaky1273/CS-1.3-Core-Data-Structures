@@ -75,7 +75,7 @@ class SetsTests(unittest.TestCase):
 
         set4 = Set(['E', 'F', 'G'])
         set5 = Set(['G', 'H', 'I'])
-        set6 = set4.intersection(set5)
+        set6 = set5.intersection(set4)
         assert set6.contains('G') == True
         assert set6.size() == 1
 
