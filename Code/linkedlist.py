@@ -97,7 +97,7 @@ class LinkedList(object):
         if not (0 <= index <= self.size):
             raise ValueError('List index out of range: {}'.format(index))
 
-        if index == self.size:
+        elif index == self.size:
             self.append(item) 
         elif index == 0:
             self.prepend(item)

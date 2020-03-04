@@ -36,18 +36,18 @@ class Set:
 
     def union(self, other_set):
         """return a new set that is the union of this set and other_set
-        Running time: O(n); It takes linear time to get keys. If the load factor increases too much, resizing is needed."""
-        #new set
-        new_set = Set()
+        Running time: O(m + n); It takes linear time to get keys. If the load factor increases too much, resizing is needed. All items are added to a new set"""
         #old sets
         this = self.hash_set.keys()
         other = other_set.hash_set.keys()
+        #new set
+        new_set = Set()
 
+        # add all elements together
         for element in this:
             new_set.add(element)
         for element in other:
             new_set.add(element)
-
         return new_set
 
     def intersection(self, other_set):
@@ -56,16 +56,12 @@ class Set:
         # new set
         new_set = Set()
         # old sets
-        # this = self.hash_set.keys()
-        other = other_set.hash_set.keys()
+        this = self.hash_set.keys()
 
-        # for element in this:
-        #     if other_set.contains(element):
-        #         new_set.add(element)
-        for element in other:
-            if self.contains(element):
+        # Find intersection
+        for element in this:
+            if other_set.contains(element):
                 new_set.add(element)
-
         return new_set
 
     def difference(self, other_set):
@@ -75,13 +71,10 @@ class Set:
         new_set = Set()
         # old sets
         this = self.hash_set.keys()
-        other = other_set.hash_set.keys()
 
+        # Find the difference
         for element in this:
             if other_set.contains(element) is False:
-                new_set.add(element)
-        for element in other:
-            if self.contains(element) is False:
                 new_set.add(element)
 
         return new_set
@@ -93,6 +86,7 @@ class Set:
         this = self.hash_set.keys()
         other = other_set.hash_set.keys()
 
+        # Indicate whether there is a subset
         for element in other:
             if element not in this:
                 return False

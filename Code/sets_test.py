@@ -91,27 +91,21 @@ class SetsTests(unittest.TestCase):
         set3 = set1.difference(set2)
         assert set3.contains('a') == True
         assert set3.contains('b') == True
-        assert set3.contains('d') == True
-        assert set3.contains('e') == True
-        assert set3.size() == 4
+        assert set3.size() == 2
 
         set4 = Set(['E', 'F', 'G'])
         set5 = Set(['G', 'H', 'I'])
         set6 = set4.difference(set5)
         assert set6.contains('E') == True
         assert set6.contains('F') == True
-        assert set6.contains('H') == True
-        assert set6.contains('I') == True
-        assert set6.size() == 4
+        assert set6.size() == 2
 
         set7 = Set([1, 2, 3])
         set8 = Set([3, 4, 5])
         set9 = set7.difference(set8)
         assert set9.contains(1) == True
         assert set9.contains(2) == True
-        assert set9.contains(4) == True
-        assert set9.contains(5) == True
-        assert set9.size() == 4
+        assert set9.size() == 2
 
     def test_is_subset(self):
         set1 = Set(['a', 'b', 'c'])
