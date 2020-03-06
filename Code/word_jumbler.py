@@ -1,5 +1,3 @@
-import sys
-
 # Dictionary
 class Dict_word_jumbler(object):
     def __init__(self):
@@ -28,16 +26,16 @@ class Dict_word_jumbler(object):
                 return None
 
 if __name__ == '__main__':
-    # # Cartoon prompt for final jumble:
-    # # "Farley rolled on the barn floor because of his __-______."
-    # words = ['tefon', 'sokik', 'niumem', 'siconu']
-    # jumble = Dict_word_jumbler()
-    # jumble.unscramble(words)
-    
-    # "A bad way for a lawyer to learn the criminal justice system: _____ and _____."
-    words = ['laisa', 'laurr', 'bureek', 'prouot']
+    # Cartoon prompt for final jumble:
+    # "Farley rolled on the barn floor because of his __-______."
+    words = ['tefon', 'sokik', 'niumem', 'siconu']
     jumble = Dict_word_jumbler()
     jumble.unscramble(words)
+    
+    # # "A bad way for a lawyer to learn the criminal justice system: _____ and _____."
+    # words = ['laisa', 'laurr', 'bureek', 'prouot']
+    # jumble = Dict_word_jumbler()
+    # jumble.unscramble(words)
 
     # # Cartoon prompt for final jumble: "What a dog house is: A ____ ___."
     # words = ['TARFD', 'JOBUM', 'TENJUK', 'LETHEM']
